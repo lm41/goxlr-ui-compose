@@ -13,7 +13,8 @@ repositories {
 
 dependencies {
     implementation(project(":common"))
-    implementation("androidx.activity:activity-compose:1.5.0")
+    implementation("androidx.activity:activity-compose:1.7.1")
+    implementation("ro.dragossusi:viewmodel:0.0.6")
 }
 
 android {

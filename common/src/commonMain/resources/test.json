@@ -1,0 +1,872 @@
+{
+  "id": 0,
+  "data": {
+    "Status": {
+      "config": {
+        "daemon_version": "0.9.0",
+        "autostart_enabled": true,
+        "show_tray_icon": true
+      },
+      "mixers": {
+        "S200301264CQK": {
+          "hardware": {
+            "versions": {
+              "firmware": [
+                1,
+                3,
+                44,
+                105
+              ],
+              "fpga_count": 7,
+              "dice": [
+                1,
+                3,
+                9,
+                100
+              ]
+            },
+            "serial_number": "S200301264CQK",
+            "manufactured_date": "2020-05-03",
+            "device_type": "Full",
+            "usb_device": {
+              "manufacturer_name": "TC-Helicon",
+              "product_name": "GoXLR",
+              "version": [
+                2,
+                0,
+                0
+              ],
+              "bus_number": 5,
+              "address": 7,
+              "identifier": null
+            }
+          },
+          "fader_status": {
+            "A": {
+              "channel": "Mic",
+              "mute_type": "ToVoiceChat",
+              "scribble": {
+                "file_name": "test_mic.png",
+                "bottom_text": "Mic",
+                "left_text": null,
+                "inverted": false
+              },
+              "mute_state": "Unmuted"
+            },
+            "B": {
+              "channel": "Music",
+              "mute_type": "ToVoiceChat",
+              "scribble": {
+                "file_name": "test_music.png",
+                "bottom_text": "Music",
+                "left_text": null,
+                "inverted": false
+              },
+              "mute_state": "MutedToX"
+            },
+            "C": {
+              "channel": "Chat",
+              "mute_type": "All",
+              "scribble": {
+                "file_name": "test_Download_cropped.png",
+                "bottom_text": "Chat",
+                "left_text": null,
+                "inverted": false
+              },
+              "mute_state": "Unmuted"
+            },
+            "D": {
+              "channel": "System",
+              "mute_type": "ToVoiceChat",
+              "scribble": {
+                "file_name": "test_level.png",
+                "bottom_text": "System",
+                "left_text": null,
+                "inverted": false
+              },
+              "mute_state": "MutedToX"
+            }
+          },
+          "mic_status": {
+            "mic_type": "Condenser",
+            "mic_gains": {
+              "Dynamic": 30,
+              "Condenser": 10,
+              "Jack": 30
+            },
+            "equaliser": {
+              "gain": {
+                "Equalizer250Hz": 2,
+                "Equalizer31Hz": 1,
+                "Equalizer63Hz": 6,
+                "Equalizer4KHz": 3,
+                "Equalizer500Hz": 3,
+                "Equalizer125Hz": 5,
+                "Equalizer16KHz": 6,
+                "Equalizer8KHz": 3,
+                "Equalizer2KHz": -1,
+                "Equalizer1KHz": 3
+              },
+              "frequency": {
+                "Equalizer31Hz": 31.5,
+                "Equalizer63Hz": 63.0,
+                "Equalizer16KHz": 16000.0,
+                "Equalizer2KHz": 2000.0,
+                "Equalizer4KHz": 4000.0,
+                "Equalizer8KHz": 8000.0,
+                "Equalizer250Hz": 250.0,
+                "Equalizer1KHz": 1000.0,
+                "Equalizer125Hz": 125.0,
+                "Equalizer500Hz": 500.0
+              }
+            },
+            "equaliser_mini": {
+              "gain": {
+                "Equalizer3KHz": 0,
+                "Equalizer1KHz": 0,
+                "Equalizer8KHz": 0,
+                "Equalizer90Hz": 0,
+                "Equalizer250Hz": 0,
+                "Equalizer500Hz": 0
+              },
+              "frequency": {
+                "Equalizer250Hz": 160.0,
+                "Equalizer1KHz": 1500.0,
+                "Equalizer90Hz": 90.0,
+                "Equalizer3KHz": 4500.0,
+                "Equalizer8KHz": 7800.0,
+                "Equalizer500Hz": 480.0
+              }
+            },
+            "noise_gate": {
+              "threshold": -48,
+              "attack": 0,
+              "release": 19,
+              "enabled": true,
+              "attenuation": 79
+            },
+            "compressor": {
+              "threshold": -31,
+              "ratio": 6,
+              "attack": 1,
+              "release": 9,
+              "makeup_gain": 7
+            }
+          },
+          "levels": {
+            "volumes": {
+              "Mic": 253,
+              "LineIn": 252,
+              "Console": 128,
+              "System": 150,
+              "Game": 255,
+              "Chat": 188,
+              "Sample": 255,
+              "Music": 174,
+              "Headphones": 243,
+              "MicMonitor": 255,
+              "LineOut": 255
+            },
+            "bleep": -20,
+            "deess": 39
+          },
+          "router": {
+            "Microphone": {
+              "Headphones": true,
+              "BroadcastMix": true,
+              "LineOut": false,
+              "ChatMic": true,
+              "Sampler": true
+            },
+            "Chat": {
+              "Headphones": true,
+              "BroadcastMix": false,
+              "LineOut": true,
+              "ChatMic": false,
+              "Sampler": true
+            },
+            "Music": {
+              "Headphones": true,
+              "BroadcastMix": true,
+              "LineOut": true,
+              "ChatMic": true,
+              "Sampler": false
+            },
+            "Game": {
+              "Headphones": true,
+              "BroadcastMix": true,
+              "LineOut": true,
+              "ChatMic": false,
+              "Sampler": false
+            },
+            "Console": {
+              "Headphones": true,
+              "BroadcastMix": true,
+              "LineOut": true,
+              "ChatMic": false,
+              "Sampler": false
+            },
+            "LineIn": {
+              "Headphones": true,
+              "BroadcastMix": false,
+              "LineOut": true,
+              "ChatMic": true,
+              "Sampler": false
+            },
+            "System": {
+              "Headphones": true,
+              "BroadcastMix": false,
+              "LineOut": true,
+              "ChatMic": true,
+              "Sampler": false
+            },
+            "Samples": {
+              "Headphones": true,
+              "BroadcastMix": false,
+              "LineOut": true,
+              "ChatMic": true,
+              "Sampler": false
+            }
+          },
+          "cough_button": {
+            "is_toggle": true,
+            "mute_type": "All",
+            "state": "Unmuted"
+          },
+          "lighting": {
+            "faders": {
+              "A": {
+                "style": "GradientMeter",
+                "colours": {
+                  "colour_one": "B400FF",
+                  "colour_two": "003FFA"
+                }
+              },
+              "C": {
+                "style": "GradientMeter",
+                "colours": {
+                  "colour_one": "B400FF",
+                  "colour_two": "003FFA"
+                }
+              },
+              "B": {
+                "style": "GradientMeter",
+                "colours": {
+                  "colour_one": "B400FF",
+                  "colour_two": "003FFA"
+                }
+              },
+              "D": {
+                "style": "GradientMeter",
+                "colours": {
+                  "colour_one": "B400FF",
+                  "colour_two": "003FFA"
+                }
+              }
+            },
+            "buttons": {
+              "EffectRobot": {
+                "off_style": "Colour2",
+                "colours": {
+                  "colour_one": "008000",
+                  "colour_two": "FF0000"
+                }
+              },
+              "Bleep": {
+                "off_style": "Colour2",
+                "colours": {
+                  "colour_one": "FF0000",
+                  "colour_two": "008000"
+                }
+              },
+              "EffectSelect5": {
+                "off_style": "Colour2",
+                "colours": {
+                  "colour_one": "FF2800",
+                  "colour_two": "FFC300"
+                }
+              },
+              "Fader3Mute": {
+                "off_style": "Colour2",
+                "colours": {
+                  "colour_one": "B400FF",
+                  "colour_two": "003FFA"
+                }
+              },
+              "Fader4Mute": {
+                "off_style": "Colour2",
+                "colours": {
+                  "colour_one": "B400FF",
+                  "colour_two": "003FFA"
+                }
+              },
+              "EffectSelect3": {
+                "off_style": "Colour2",
+                "colours": {
+                  "colour_one": "FF2800",
+                  "colour_two": "FFC300"
+                }
+              },
+              "EffectSelect1": {
+                "off_style": "Colour2",
+                "colours": {
+                  "colour_one": "FF2800",
+                  "colour_two": "FFC300"
+                }
+              },
+              "EffectSelect2": {
+                "off_style": "Colour2",
+                "colours": {
+                  "colour_one": "FF2800",
+                  "colour_two": "FFC300"
+                }
+              },
+              "Fader2Mute": {
+                "off_style": "Colour2",
+                "colours": {
+                  "colour_one": "B400FF",
+                  "colour_two": "003FFA"
+                }
+              },
+              "EffectMegaphone": {
+                "off_style": "Colour2",
+                "colours": {
+                  "colour_one": "008000",
+                  "colour_two": "FF0000"
+                }
+              },
+              "Fader1Mute": {
+                "off_style": "Colour2",
+                "colours": {
+                  "colour_one": "B400FF",
+                  "colour_two": "003FFA"
+                }
+              },
+              "EffectSelect4": {
+                "off_style": "Colour2",
+                "colours": {
+                  "colour_one": "FF2800",
+                  "colour_two": "FFC300"
+                }
+              },
+              "EffectSelect6": {
+                "off_style": "Colour2",
+                "colours": {
+                  "colour_one": "FF2800",
+                  "colour_two": "FFC300"
+                }
+              },
+              "Cough": {
+                "off_style": "Colour2",
+                "colours": {
+                  "colour_one": "FF0000",
+                  "colour_two": "008000"
+                }
+              },
+              "EffectFx": {
+                "off_style": "Colour2",
+                "colours": {
+                  "colour_one": "008000",
+                  "colour_two": "FF0000"
+                }
+              },
+              "EffectHardTune": {
+                "off_style": "Colour2",
+                "colours": {
+                  "colour_one": "008000",
+                  "colour_two": "FF0000"
+                }
+              }
+            },
+            "simple": {
+              "Scribble1": {
+                "colour_one": "00FFFF"
+              },
+              "Scribble3": {
+                "colour_one": "00FFFF"
+              },
+              "Accent": {
+                "colour_one": "003FFA"
+              },
+              "Scribble2": {
+                "colour_one": "00FFFF"
+              },
+              "Global": {
+                "colour_one": "00FFFF"
+              },
+              "Scribble4": {
+                "colour_one": "00FFFF"
+              }
+            },
+            "sampler": {
+              "SamplerSelectA": {
+                "off_style": "Colour2",
+                "colours": {
+                  "colour_one": "FF0000",
+                  "colour_two": "B400FF",
+                  "colour_three": "FF00C8"
+                }
+              },
+              "SamplerSelectC": {
+                "off_style": "Colour2",
+                "colours": {
+                  "colour_one": "FF0000",
+                  "colour_two": "B400FF",
+                  "colour_three": "FF00C8"
+                }
+              },
+              "SamplerSelectB": {
+                "off_style": "Colour2",
+                "colours": {
+                  "colour_one": "FF0000",
+                  "colour_two": "B400FF",
+                  "colour_three": "FF00C8"
+                }
+              }
+            },
+            "encoders": {
+              "Reverb": {
+                "colour_one": "003FFA",
+                "colour_two": "00FFFF",
+                "colour_three": "B400FF"
+              },
+              "Gender": {
+                "colour_one": "00FFFF",
+                "colour_two": "003FFA",
+                "colour_three": "FF00C8"
+              },
+              "Pitch": {
+                "colour_one": "00FFFF",
+                "colour_two": "003FFA",
+                "colour_three": "FF00C8"
+              },
+              "Echo": {
+                "colour_one": "003FFA",
+                "colour_two": "00FFFF",
+                "colour_three": "FF00C8"
+              }
+            }
+          },
+          "effects": {
+            "is_enabled": false,
+            "active_preset": "Preset1",
+            "preset_names": {
+              "Preset1": "Big Verb",
+              "Preset4": "Kid Robot",
+              "Preset2": "Comms Radio",
+              "Preset5": "PitchDn Echo",
+              "Preset6": "Tank",
+              "Preset3": "HardTune Music"
+            },
+            "current": {
+              "reverb": {
+                "style": "HockeyArena",
+                "amount": 25,
+                "decay": 6000,
+                "early_level": 0,
+                "tail_level": -2,
+                "pre_delay": 100,
+                "lo_colour": 10,
+                "hi_colour": -39,
+                "hi_factor": 21,
+                "diffuse": 0,
+                "mod_speed": -3,
+                "mod_depth": 21
+              },
+              "echo": {
+                "style": "Quarter",
+                "amount": 20,
+                "feedback": 30,
+                "tempo": 149,
+                "delay_left": 500,
+                "delay_right": 500,
+                "feedback_left": 50,
+                "feedback_right": 50,
+                "feedback_xfb_l_to_r": 0,
+                "feedback_xfb_r_to_l": 0
+              },
+              "pitch": {
+                "style": "Narrow",
+                "amount": -2,
+                "character": 75
+              },
+              "gender": {
+                "style": "Narrow",
+                "amount": 0
+              },
+              "megaphone": {
+                "is_enabled": false,
+                "style": "Megaphone",
+                "amount": 0,
+                "post_gain": 2
+              },
+              "robot": {
+                "is_enabled": false,
+                "style": "Robot1",
+                "low_gain": -10,
+                "low_freq": 88,
+                "low_width": 0,
+                "mid_gain": 5,
+                "mid_freq": 173,
+                "mid_width": 32,
+                "high_gain": 0,
+                "high_freq": 182,
+                "high_width": 0,
+                "waveform": 0,
+                "pulse_width": 50,
+                "threshold": -36,
+                "dry_mix": -6
+              },
+              "hard_tune": {
+                "is_enabled": false,
+                "style": "Natural",
+                "amount": 70,
+                "rate": 20,
+                "window": 20,
+                "source": "All"
+              }
+            }
+          },
+          "sampler": {
+            "banks": {
+              "A": {
+                "TopRight": {
+                  "function": "PlayFade",
+                  "order": "Sequential",
+                  "samples": [],
+                  "is_playing": false
+                },
+                "BottomLeft": {
+                  "function": "PlayFade",
+                  "order": "Sequential",
+                  "samples": [],
+                  "is_playing": false
+                },
+                "BottomRight": {
+                  "function": "PlayFade",
+                  "order": "Sequential",
+                  "samples": [],
+                  "is_playing": false
+                },
+                "TopLeft": {
+                  "function": "PlayFade",
+                  "order": "Sequential",
+                  "samples": [],
+                  "is_playing": false
+                }
+              },
+              "B": {
+                "TopRight": {
+                  "function": "PlayFade",
+                  "order": "Sequential",
+                  "samples": [],
+                  "is_playing": false
+                },
+                "TopLeft": {
+                  "function": "PlayFade",
+                  "order": "Sequential",
+                  "samples": [],
+                  "is_playing": false
+                },
+                "BottomRight": {
+                  "function": "PlayFade",
+                  "order": "Sequential",
+                  "samples": [],
+                  "is_playing": false
+                },
+                "BottomLeft": {
+                  "function": "PlayFade",
+                  "order": "Sequential",
+                  "samples": [],
+                  "is_playing": false
+                }
+              },
+              "C": {
+                "TopRight": {
+                  "function": "PlayFade",
+                  "order": "Random",
+                  "samples": [],
+                  "is_playing": false
+                },
+                "BottomLeft": {
+                  "function": "PlayFade",
+                  "order": "Sequential",
+                  "samples": [],
+                  "is_playing": false
+                },
+                "BottomRight": {
+                  "function": "PlayFade",
+                  "order": "Sequential",
+                  "samples": [],
+                  "is_playing": false
+                },
+                "TopLeft": {
+                  "function": "PlayFade",
+                  "order": "Sequential",
+                  "samples": [],
+                  "is_playing": false
+                }
+              }
+            }
+          },
+          "settings": {
+            "display": {
+              "gate": "Advanced",
+              "compressor": "Simple",
+              "equaliser": "Simple",
+              "equaliser_fine": "Simple"
+            },
+            "mute_hold_duration": 500,
+            "vc_mute_also_mute_cm": true
+          },
+          "button_down": {
+            "Fader1Mute": false,
+            "Fader2Mute": false,
+            "Fader3Mute": false,
+            "Fader4Mute": false,
+            "Bleep": false,
+            "Cough": false,
+            "EffectSelect1": false,
+            "EffectSelect2": false,
+            "EffectSelect3": false,
+            "EffectSelect4": false,
+            "EffectSelect5": false,
+            "EffectSelect6": false,
+            "EffectFx": false,
+            "EffectMegaphone": false,
+            "EffectRobot": false,
+            "EffectHardTune": false,
+            "SamplerSelectA": false,
+            "SamplerSelectB": false,
+            "SamplerSelectC": false,
+            "SamplerTopLeft": false,
+            "SamplerTopRight": false,
+            "SamplerBottomLeft": false,
+            "SamplerBottomRight": false,
+            "SamplerClear": false
+          },
+          "profile_name": "Normal Config",
+          "mic_profile_name": "bass new"
+        }
+      },
+      "paths": {
+        "profile_directory": "/home/lm41/.local/share/goxlr-utility/profiles",
+        "mic_profile_directory": "/home/lm41/.local/share/goxlr-utility/mic-profiles",
+        "samples_directory": "/home/lm41/.local/share/goxlr-utility/samples",
+        "presets_directory": "/home/lm41/.local/share/goxlr-utility/presets",
+        "icons_directory": "/home/lm41/.local/share/goxlr-utility/icons"
+      },
+      "files": {
+        "profiles": [
+          "Default",
+          "Normal Config",
+          "Sleep",
+          "test"
+        ],
+        "mic_profiles": [
+          "bass new",
+          "DEFAULT",
+          "Lower Threshold",
+          "With Bass"
+        ],
+        "presets": [],
+        "samples": {
+          "ALT/chanchan.swf.mp3": "chanchan.swf.mp3",
+          "ALT/deja-vu.mp3": "deja-vu.mp3",
+          "ALT/george-micael-wham-careless-whisper-1.mp3": "george-micael-wham-careless-whisper-1.mp3",
+          "ALT/hey_listen.mp3": "hey_listen.mp3",
+          "ALT/hitler-nein_1.mp3": "hitler-nein_1.mp3",
+          "ALT/in-die-fresse.mp3": "in-die-fresse.mp3",
+          "ALT/joke_drum_effect.mp3": "joke_drum_effect.mp3",
+          "ALT/sm64_mario_boing-online-audio-converter.mp3": "sm64_mario_boing-online-audio-converter.mp3",
+          "ALT/titanic-parody-mp3cut.mp3": "titanic-parody-mp3cut.mp3",
+          "ALT/to-be-continued.mp3": "to-be-continued.mp3",
+          "ALT/wrong-answer-sound-effect.mp3": "wrong-answer-sound-effect.mp3",
+          "Johannes Rappt/Johannes Freestyle (1).wav": "Johannes Freestyle (1).wav",
+          "Krass Dumm/Ja, ich verstelle meine stimme wenn ich dumm bin.wav": "Ja, ich verstelle meine stimme wenn ich dumm bin.wav",
+          "Krass Dumm/anna-lache-nich-ok.mp3": "anna-lache-nich-ok.mp3",
+          "Krass Dumm/dome-wie-siehst-du-denn-aus.mp3": "dome-wie-siehst-du-denn-aus.mp3",
+          "Lustiger Porno Dialog - ALARM in der Feuerwehr - ALARM ALARM.mp3": "Lustiger Porno Dialog - ALARM in der Feuerwehr - ALARM ALARM.mp3",
+          "Posaune/Wachet_auf.wav": "Wachet_auf.wav",
+          "Recorded/Recording_2020-07-13T011311.wav": "Recording_2020-07-13T011311.wav",
+          "Recorded/Recording_2020-07-13T022016.wav": "Recording_2020-07-13T022016.wav",
+          "Recorded/Recording_2020-07-13T092414.wav": "Recording_2020-07-13T092414.wav",
+          "Recorded/Recording_2020-07-13T092503.wav": "Recording_2020-07-13T092503.wav",
+          "Recorded/Recording_2020-07-13T092514.wav": "Recording_2020-07-13T092514.wav",
+          "Recorded/Recording_2020-07-13T092613.wav": "Recording_2020-07-13T092613.wav",
+          "Recorded/Recording_2020-07-13T092645.wav": "Recording_2020-07-13T092645.wav",
+          "Recorded/Recording_2020-07-13T093025.wav": "Recording_2020-07-13T093025.wav",
+          "Recorded/Recording_2020-07-13T094846.wav": "Recording_2020-07-13T094846.wav",
+          "Recorded/Recording_2020-07-13T095054.wav": "Recording_2020-07-13T095054.wav",
+          "Recorded/Recording_2020-07-13T095107.wav": "Recording_2020-07-13T095107.wav",
+          "Recorded/Recording_2020-07-13T100418.wav": "Recording_2020-07-13T100418.wav",
+          "Recorded/Recording_2020-07-14T083613.wav": "Recording_2020-07-14T083613.wav",
+          "Recorded/Recording_2020-07-14T083615.wav": "Recording_2020-07-14T083615.wav",
+          "Recorded/Recording_2020-07-14T100325.wav": "Recording_2020-07-14T100325.wav",
+          "Recorded/Recording_2020-07-15T013742.wav": "Recording_2020-07-15T013742.wav",
+          "Recorded/Recording_2020-07-15T062654.wav": "Recording_2020-07-15T062654.wav",
+          "Recorded/Recording_2020-07-15T074230.wav": "Recording_2020-07-15T074230.wav",
+          "Recorded/Recording_2020-07-20T123916.wav": "Recording_2020-07-20T123916.wav",
+          "Recorded/Recording_2020-07-20T123917.wav": "Recording_2020-07-20T123917.wav",
+          "Recorded/Recording_2020-07-20T124409.wav": "Recording_2020-07-20T124409.wav",
+          "Recorded/Recording_2020-07-21T092705.wav": "Recording_2020-07-21T092705.wav",
+          "Recorded/Recording_2020-07-21T111343.wav": "Recording_2020-07-21T111343.wav",
+          "Recorded/Recording_2020-07-22T074830.wav": "Recording_2020-07-22T074830.wav",
+          "Recorded/Recording_2020-07-22T101332.wav": "Recording_2020-07-22T101332.wav",
+          "Recorded/Recording_2020-07-22T101353.wav": "Recording_2020-07-22T101353.wav",
+          "Recorded/Recording_2020-07-22T124304.wav": "Recording_2020-07-22T124304.wav",
+          "Recorded/Recording_2020-07-24T053440.wav": "Recording_2020-07-24T053440.wav",
+          "Recorded/Recording_2020-08-03T064639.wav": "Recording_2020-08-03T064639.wav",
+          "Recorded/Recording_2020-08-05T024736.wav": "Recording_2020-08-05T024736.wav",
+          "Recorded/Recording_2020-08-05T030104.wav": "Recording_2020-08-05T030104.wav",
+          "Recorded/Recording_2020-08-05T030105.wav": "Recording_2020-08-05T030105.wav",
+          "Recorded/Recording_2020-08-05T030107.wav": "Recording_2020-08-05T030107.wav",
+          "Recorded/Recording_2020-08-05T061526.wav": "Recording_2020-08-05T061526.wav",
+          "Recorded/Recording_2020-08-05T061528.wav": "Recording_2020-08-05T061528.wav",
+          "Recorded/Recording_2020-08-05T061544.wav": "Recording_2020-08-05T061544.wav",
+          "Recorded/Recording_2020-08-05T061644.wav": "Recording_2020-08-05T061644.wav",
+          "Recorded/Recording_2020-08-05T061649.wav": "Recording_2020-08-05T061649.wav",
+          "Recorded/Recording_2020-08-05T061657.wav": "Recording_2020-08-05T061657.wav",
+          "Recorded/Recording_2020-08-05T061809.wav": "Recording_2020-08-05T061809.wav",
+          "Recorded/Recording_2020-08-05T061825.wav": "Recording_2020-08-05T061825.wav",
+          "Recorded/Recording_2020-08-05T061833.wav": "Recording_2020-08-05T061833.wav",
+          "Recorded/Recording_2020-08-05T061837.wav": "Recording_2020-08-05T061837.wav",
+          "Recorded/Recording_2020-08-05T061910.wav": "Recording_2020-08-05T061910.wav",
+          "Recorded/Recording_2020-08-05T061930.wav": "Recording_2020-08-05T061930.wav",
+          "Recorded/Recording_2020-08-05T061949.wav": "Recording_2020-08-05T061949.wav",
+          "Recorded/Recording_2020-08-05T062102.wav": "Recording_2020-08-05T062102.wav",
+          "Recorded/Recording_2020-08-05T062111.wav": "Recording_2020-08-05T062111.wav",
+          "Recorded/Recording_2020-08-05T062118.wav": "Recording_2020-08-05T062118.wav",
+          "Recorded/Recording_2020-08-05T062127.wav": "Recording_2020-08-05T062127.wav",
+          "Recorded/Recording_2020-08-05T062239.wav": "Recording_2020-08-05T062239.wav",
+          "Recorded/Recording_2020-08-05T062714.wav": "Recording_2020-08-05T062714.wav",
+          "Recorded/Recording_2020-08-05T062724.wav": "Recording_2020-08-05T062724.wav",
+          "Recorded/Recording_2020-08-05T062750.wav": "Recording_2020-08-05T062750.wav",
+          "Recorded/Recording_2020-08-05T062751.wav": "Recording_2020-08-05T062751.wav",
+          "Recorded/Recording_2020-08-05T062752.wav": "Recording_2020-08-05T062752.wav",
+          "Recorded/Recording_2020-08-05T062754.wav": "Recording_2020-08-05T062754.wav",
+          "Recorded/Recording_2020-08-18T073047.wav": "Recording_2020-08-18T073047.wav",
+          "Recorded/Recording_2020-08-18T073144.wav": "Recording_2020-08-18T073144.wav",
+          "Recorded/Recording_2020-08-18T073151.wav": "Recording_2020-08-18T073151.wav",
+          "Recorded/Recording_2020-08-23T073755.wav": "Recording_2020-08-23T073755.wav",
+          "Recorded/Recording_2020-08-23T073833.wav": "Recording_2020-08-23T073833.wav",
+          "Recorded/Recording_2020-08-23T073937.wav": "Recording_2020-08-23T073937.wav",
+          "Recorded/Recording_2020-08-25T074528.wav": "Recording_2020-08-25T074528.wav",
+          "Recorded/Recording_2020-09-01T074630.wav": "Recording_2020-09-01T074630.wav",
+          "Recorded/Recording_2020-09-01T074631.wav": "Recording_2020-09-01T074631.wav",
+          "Recorded/Recording_2020-09-01T074636.wav": "Recording_2020-09-01T074636.wav",
+          "Recorded/Recording_2020-09-01T074638.wav": "Recording_2020-09-01T074638.wav",
+          "Recorded/Recording_2020-09-01T074653.wav": "Recording_2020-09-01T074653.wav",
+          "Recorded/Recording_2020-09-01T075311.wav": "Recording_2020-09-01T075311.wav",
+          "Recorded/Recording_2020-09-01T075549.wav": "Recording_2020-09-01T075549.wav",
+          "Recorded/Recording_2020-09-01T082218.wav": "Recording_2020-09-01T082218.wav",
+          "Recorded/Recording_2020-09-05T065337.wav": "Recording_2020-09-05T065337.wav",
+          "Recorded/Recording_2020-09-05T065647.wav": "Recording_2020-09-05T065647.wav",
+          "Recorded/Recording_2020-09-15T071315.wav": "Recording_2020-09-15T071315.wav",
+          "Recorded/Recording_2020-09-15T071351.wav": "Recording_2020-09-15T071351.wav",
+          "Recorded/Recording_2020-09-15T071355.wav": "Recording_2020-09-15T071355.wav",
+          "Recorded/Recording_2020-09-15T071357.wav": "Recording_2020-09-15T071357.wav",
+          "Recorded/Recording_2020-09-15T071721.wav": "Recording_2020-09-15T071721.wav",
+          "Recorded/Recording_2020-09-16T072616.wav": "Recording_2020-09-16T072616.wav",
+          "Recorded/Recording_2020-09-16T073150.wav": "Recording_2020-09-16T073150.wav",
+          "Recorded/Recording_2020-09-16T073224.wav": "Recording_2020-09-16T073224.wav",
+          "Recorded/Recording_2020-09-17T073518.wav": "Recording_2020-09-17T073518.wav",
+          "Recorded/Recording_2020-09-17T073527.wav": "Recording_2020-09-17T073527.wav",
+          "Recorded/Recording_2020-09-17T073542.wav": "Recording_2020-09-17T073542.wav",
+          "Recorded/Recording_2020-09-17T073549.wav": "Recording_2020-09-17T073549.wav",
+          "Recorded/Recording_2020-09-17T073554.wav": "Recording_2020-09-17T073554.wav",
+          "Recorded/Recording_2020-09-17T073557.wav": "Recording_2020-09-17T073557.wav",
+          "Recorded/Recording_2020-10-06T073232.wav": "Recording_2020-10-06T073232.wav",
+          "Recorded/Recording_2020-10-14T063325.wav": "Recording_2020-10-14T063325.wav",
+          "Recorded/Recording_2020-10-17T061812.wav": "Recording_2020-10-17T061812.wav",
+          "Recorded/Recording_2020-10-17T075716.wav": "Recording_2020-10-17T075716.wav",
+          "Recorded/Recording_2020-10-23T065419.wav": "Recording_2020-10-23T065419.wav",
+          "Recorded/Recording_2020-10-31T070613.wav": "Recording_2020-10-31T070613.wav",
+          "Recorded/Recording_2020-10-31T074127.wav": "Recording_2020-10-31T074127.wav",
+          "Recorded/Recording_2020-10-31T074206.wav": "Recording_2020-10-31T074206.wav",
+          "Recorded/Recording_2020-10-31T074230.wav": "Recording_2020-10-31T074230.wav",
+          "Recorded/Recording_2020-10-31T074245.wav": "Recording_2020-10-31T074245.wav",
+          "Recorded/Recording_2020-10-31T081954.wav": "Recording_2020-10-31T081954.wav",
+          "Recorded/Recording_2020-11-16T085930.wav": "Recording_2020-11-16T085930.wav",
+          "Recorded/Recording_2020-11-16T090244.wav": "Recording_2020-11-16T090244.wav",
+          "Recorded/Recording_2020-11-26T090548.wav": "Recording_2020-11-26T090548.wav",
+          "Recorded/Recording_2020-12-09T010550.wav": "Recording_2020-12-09T010550.wav",
+          "Recorded/Recording_2020-12-09T125705.wav": "Recording_2020-12-09T125705.wav",
+          "Recorded/Recording_2020-12-20T085836.wav": "Recording_2020-12-20T085836.wav",
+          "Recorded/Recording_2020-12-20T085844.wav": "Recording_2020-12-20T085844.wav",
+          "Recorded/Recording_2020-12-20T085931.wav": "Recording_2020-12-20T085931.wav",
+          "Recorded/Recording_2020-12-20T090031.wav": "Recording_2020-12-20T090031.wav",
+          "Recorded/Recording_2020-12-23T024254.wav": "Recording_2020-12-23T024254.wav",
+          "Recorded/Recording_2021-01-14T104123.wav": "Recording_2021-01-14T104123.wav",
+          "Recorded/Recording_2021-01-14T104147.wav": "Recording_2021-01-14T104147.wav",
+          "Recorded/Recording_2021-01-15T070823.wav": "Recording_2021-01-15T070823.wav",
+          "Recorded/Recording_2021-01-15T114440.wav": "Recording_2021-01-15T114440.wav",
+          "Recorded/Recording_2021-01-20T030836.wav": "Recording_2021-01-20T030836.wav",
+          "Recorded/Recording_2021-01-27T090943.wav": "Recording_2021-01-27T090943.wav",
+          "Recorded/Recording_2021-01-27T091017.wav": "Recording_2021-01-27T091017.wav",
+          "Recorded/Recording_2021-01-27T091034.wav": "Recording_2021-01-27T091034.wav",
+          "Recorded/Recording_2021-01-27T091157.wav": "Recording_2021-01-27T091157.wav",
+          "Recorded/Recording_2021-01-27T091214.wav": "Recording_2021-01-27T091214.wav",
+          "Recorded/Recording_2021-01-27T091239.wav": "Recording_2021-01-27T091239.wav",
+          "Recorded/Recording_2021-01-27T091252.wav": "Recording_2021-01-27T091252.wav",
+          "Recorded/Recording_2021-01-27T091256.wav": "Recording_2021-01-27T091256.wav",
+          "Recorded/Recording_2021-01-27T091307.wav": "Recording_2021-01-27T091307.wav",
+          "Recorded/Recording_2021-01-27T091342.wav": "Recording_2021-01-27T091342.wav",
+          "Recorded/Recording_2021-01-27T091405.wav": "Recording_2021-01-27T091405.wav",
+          "Recorded/Recording_2021-01-27T091407.wav": "Recording_2021-01-27T091407.wav",
+          "Recorded/Recording_2021-01-27T091412.wav": "Recording_2021-01-27T091412.wav",
+          "Recorded/Recording_2021-01-27T091437.wav": "Recording_2021-01-27T091437.wav",
+          "Recorded/Recording_2021-01-27T091443.wav": "Recording_2021-01-27T091443.wav",
+          "Recorded/Recording_2021-02-06T040141.wav": "Recording_2021-02-06T040141.wav",
+          "Recorded/Recording_2021-02-09T051859.wav": "Recording_2021-02-09T051859.wav",
+          "Recorded/Recording_2021-02-11T101104.wav": "Recording_2021-02-11T101104.wav",
+          "Recorded/Recording_2021-04-16T124206.wav": "Recording_2021-04-16T124206.wav",
+          "Recorded/Recording_2021-04-16T124620.wav": "Recording_2021-04-16T124620.wav",
+          "Recorded/Recording_2021-04-20T015806.wav": "Recording_2021-04-20T015806.wav",
+          "Recorded/Recording_2021-04-20T065130.wav": "Recording_2021-04-20T065130.wav",
+          "Recorded/Recording_2022-10-26T132447.wav": "Recording_2022-10-26T132447.wav",
+          "Recorded/Recording_2022-10-26T132521.wav": "Recording_2022-10-26T132521.wav",
+          "Recorded/Recording_2022-11-03T200608.wav": "Recording_2022-11-03T200608.wav",
+          "Recorded/Recording_2022-11-03T200614.wav": "Recording_2022-11-03T200614.wav",
+          "Recorded/Recording_2022-12-08T183914.wav": "Recording_2022-12-08T183914.wav",
+          "Recorded/Recording_2022-12-08T184003.wav": "Recording_2022-12-08T184003.wav",
+          "Recorded/Recording_2022-12-08T190916.wav": "Recording_2022-12-08T190916.wav",
+          "Recorded/Recording_2022-12-13T200639.wav": "Recording_2022-12-13T200639.wav",
+          "Recorded/Recording_2022-12-19T203552.wav": "Recording_2022-12-19T203552.wav",
+          "Recorded/Recording_2022-12-20T181455.wav": "Recording_2022-12-20T181455.wav",
+          "Recorded/Recording_2022-12-22T163111.wav": "Recording_2022-12-22T163111.wav",
+          "Recorded/Recording_2022-12-22T163123.wav": "Recording_2022-12-22T163123.wav",
+          "Recorded/Recording_2022-12-22T163141.wav": "Recording_2022-12-22T163141.wav",
+          "Recorded/Recording_2022-12-22T200612.wav": "Recording_2022-12-22T200612.wav",
+          "Recorded/Recording_2022-12-22T200622.wav": "Recording_2022-12-22T200622.wav",
+          "Recorded/Recording_2022-12-22T200637.wav": "Recording_2022-12-22T200637.wav",
+          "Recorded/Recording_2022-12-22T200710.wav": "Recording_2022-12-22T200710.wav",
+          "Recorded/Recording_2022-12-22T200732.wav": "Recording_2022-12-22T200732.wav",
+          "Recorded/Recording_2022-12-22T200739.wav": "Recording_2022-12-22T200739.wav",
+          "Recorded/Recording_2022-12-22T200745.wav": "Recording_2022-12-22T200745.wav",
+          "Recorded/Recording_2022-12-22T200834.wav": "Recording_2022-12-22T200834.wav",
+          "Recorded/Recording_2023-01-04T223510.wav": "Recording_2023-01-04T223510.wav",
+          "Recorded/Recording_2023-01-19T214715.wav": "Recording_2023-01-19T214715.wav",
+          "Recorded/Recording_2023-01-19T220403.wav": "Recording_2023-01-19T220403.wav",
+          "Recorded/Recording_2023-01-30T215234.wav": "Recording_2023-01-30T215234.wav",
+          "Sound Effekts/chanchan.swf.wav": "chanchan.swf.wav",
+          "Sound Effekts/deja-vu.wav": "deja-vu.wav",
+          "Sound Effekts/george-micael-wham-careless-whisper-1.wav": "george-micael-wham-careless-whisper-1.wav",
+          "Sound Effekts/hey_listen.wav": "hey_listen.wav",
+          "Sound Effekts/hitler-nein_1.wav": "hitler-nein_1.wav",
+          "Sound Effekts/in-die-fresse.wav": "in-die-fresse.wav",
+          "Sound Effekts/joke_drum_effect.wav": "joke_drum_effect.wav",
+          "Sound Effekts/pornhub-see-you-again-remake-2_50k.mp3": "pornhub-see-you-again-remake-2_50k.mp3",
+          "Sound Effekts/sm64_mario_boing-online-audio-converter.wav": "sm64_mario_boing-online-audio-converter.wav",
+          "Sound Effekts/there-you-go.mp3": "there-you-go.mp3",
+          "Sound Effekts/titanic-parody-mp3cut.wav": "titanic-parody-mp3cut.wav",
+          "Sound Effekts/to-be-continued.wav": "to-be-continued.wav",
+          "Sound Effekts/wrong-answer-sound-effect.wav": "wrong-answer-sound-effect.wav",
+          "ficken sound effect0.mp3": "ficken sound effect0.mp3",
+          "linkin_park_in_the_end_mellen_gi_tommee_profitt_remix_mv9A6nIByoK-gucZaEAy.mp3": "linkin_park_in_the_end_mellen_gi_tommee_profitt_remix_mv9A6nIByoK-gucZaEAy.mp3"
+        },
+        "icons": []
+      }
+    }
+  }
+}

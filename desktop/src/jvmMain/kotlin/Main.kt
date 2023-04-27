@@ -4,7 +4,11 @@ import de.rmrf.common.App
 
 
 fun main() = application {
-    Window(onCloseRequest = ::exitApplication) {
+
+    Window(
+        onCloseRequest = ::exitApplication,
+        title = "GoXLR UI"
+    ) {
         App()
     }
 }
