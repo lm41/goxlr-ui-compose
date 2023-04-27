@@ -8,11 +8,7 @@ import androidx.compose.material3.TextField
 import androidx.compose.runtime.*
 import de.rmrf.common.di.module
 import de.rmrf.common.di.rememberMainAppState
-import de.rmrf.common.io.WebsocketHandler
 import de.rmrf.common.ui.SelectGoXLR
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
-import org.koin.compose.getKoin
 import org.koin.compose.koinInject
 import org.koin.core.context.startKoin
 import org.koin.core.parameter.parametersOf
@@ -26,6 +22,14 @@ fun App() {
     ViewHolder()
 }
 
+/*TODO:
+ * Split ViewHolder for all modules
+ * Transfer all commands for sending to daemon
+ * Add a navigation system
+ * Add the screens.
+ * Finish the fader screen
+ */
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ViewHolder() {
@@ -33,7 +37,7 @@ fun ViewHolder() {
     var port by remember { mutableStateOf("") }
     val isSubmitted = remember { mutableStateOf(false) }
 
-    if (isSubmitted.value){
+    if (isSubmitted.value) {
         val state = rememberMainAppState(koinInject(parameters = { parametersOf(ip, port.toInt()) }))
         if (state.mixer.isEmpty()) {
             SelectGoXLR(state)
