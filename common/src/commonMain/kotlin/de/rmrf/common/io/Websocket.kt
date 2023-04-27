@@ -34,7 +34,7 @@ object WebsocketHandler {
         println("Initialize ${this::class.java.name}")
         client = OkHttpClient()
             .newWebSocket(
-                Request.Builder().url("ws://localhost:14564/api/websocket").build(),
+                Request.Builder().url("ws://192.168.178.136:14564/api/websocket").build(),
                 SocketListen {
                     handleMessage(it)
                 }

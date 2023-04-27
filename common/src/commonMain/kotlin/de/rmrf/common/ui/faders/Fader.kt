@@ -1,6 +1,6 @@
 package de.rmrf.common.ui.faders
 
-import androidx.compose.desktop.ui.tooling.preview.Preview
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -72,7 +72,7 @@ fun FaderBox(
         }
     }
 }
-
+/*
 @Preview
 @Composable
 fun FaderBoxPreview() {
@@ -161,3 +161,4 @@ fun FaderPreview() {
 
 
 }
+*/
