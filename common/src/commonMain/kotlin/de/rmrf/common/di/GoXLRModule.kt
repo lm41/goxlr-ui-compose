@@ -1,8 +1,9 @@
 package de.rmrf.common.di
 
 import de.rmrf.common.io.WebsocketHandler
+import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.module
 
 val module = module {
-    single { WebsocketHandler }
+    singleOf(::WebsocketHandler)
 }

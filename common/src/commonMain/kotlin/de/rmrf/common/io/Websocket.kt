@@ -21,7 +21,7 @@ import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.properties.Delegates
 
-object WebsocketHandler {
+class WebsocketHandler(websocketIp: String, websocketPort: Int) {
 
     private val mapper: ObjectMapper = jacksonObjectMapper().setPropertyNamingStrategy(PropertyNamingStrategies.SNAKE_CASE)
     lateinit var data: JsonNode
@@ -34,7 +34,7 @@ object WebsocketHandler {
         println("Initialize ${this::class.java.name}")
         client = OkHttpClient()
             .newWebSocket(
-                Request.Builder().url("ws://192.168.178.136:14564/api/websocket").build(),
+                Request.Builder().url("ws://$websocketIp:$websocketPort/api/websocket").build(),
                 SocketListen {
                     handleMessage(it)
                 }
