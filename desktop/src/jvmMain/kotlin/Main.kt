@@ -5,7 +5,8 @@ import de.rmrf.common.App
 
 fun main() = application {
 
-    Window(
+
+Window(
         onCloseRequest = ::exitApplication,
         title = "GoXLR UI"
     ) {

@@ -5,15 +5,16 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import de.rmrf.common.di.MainAppState
 import de.rmrf.common.di.rememberMainAppState
 
 @Composable
-actual fun SelectGoXLR() {
+actual fun SelectGoXLR(state: MainAppState) {
     val state = rememberMainAppState()
     state.webSocketHandler.state?.let {
         println("test")
         LazyColumn {
-            this.items(it.status.mixers.toList()){
+            this.items(it.status.mixers.toList()) {
                 Button(
                     onClick = {
                         println("$it clicked")

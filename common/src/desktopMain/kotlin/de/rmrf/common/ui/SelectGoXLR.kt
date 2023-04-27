@@ -11,14 +11,22 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import de.rmrf.common.di.rememberMainAppState
+import de.rmrf.common.di.MainAppState
 
 @Composable
-actual fun SelectGoXLR() {
-    val state = rememberMainAppState()
+actual fun SelectGoXLR(state: MainAppState) {
+
     state.webSocketHandler.state?.let {
+        it.status.mixers.let { hm ->
+            if (hm.size == 1) {
+                state.mixer = hm.toList()[0].first
+                state.currentState = state.webSocketHandler.state!!.status
+                println("${state.mixer} selected")
+            }
+        }
+
         Column {
-            Box(contentAlignment = Alignment.TopCenter, modifier = Modifier.fillMaxWidth()){
+            Box(contentAlignment = Alignment.TopCenter, modifier = Modifier.fillMaxWidth()) {
                 Text("Please select a device:", fontWeight = FontWeight.Bold, fontSize = 24.sp)
             }
             Spacer(modifier = Modifier.height(24.dp))
