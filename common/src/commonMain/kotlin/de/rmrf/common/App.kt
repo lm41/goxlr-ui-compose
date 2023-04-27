@@ -1,7 +1,11 @@
 package de.rmrf.common
 
+import androidx.compose.foundation.layout.Column
+import androidx.compose.material3.Button
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
+import androidx.compose.material3.TextField
+import androidx.compose.runtime.*
 import de.rmrf.common.di.module
 import de.rmrf.common.di.rememberMainAppState
 import de.rmrf.common.io.WebsocketHandler
@@ -22,14 +26,39 @@ fun App() {
     ViewHolder()
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ViewHolder() {
-    val ip = "192.168.178.136"
-    val port = 14564
-    val state = rememberMainAppState(koinInject(parameters = { parametersOf(ip, port) }))
-    if (state.mixer.isEmpty()) {
-        SelectGoXLR(state)
+    var ip by remember { mutableStateOf("") }
+    var port by remember { mutableStateOf("") }
+    val isSubmitted = remember { mutableStateOf(false) }
+
+    if (isSubmitted.value){
+        val state = rememberMainAppState(koinInject(parameters = { parametersOf(ip, port.toInt()) }))
+        if (state.mixer.isEmpty()) {
+            SelectGoXLR(state)
+        } else {
+            Text("${state.mixer} selected")
+        }
     } else {
-        Text("${state.mixer} selected")
+        Column {
+            TextField(
+                value = ip,
+                onValueChange = { newText -> ip = newText },
+                label = { Text("Enter ip address:") }
+            )
+            TextField(
+                value = port,
+                onValueChange = { newText -> port = newText },
+                label = { Text("Enter port address:") }
+            )
+            Button(
+                onClick = {
+                    isSubmitted.value = true
+                }
+            ) {
+                Text(text = "Submit ip and port!")
+            }
+        }
     }
 }
