@@ -6,4 +6,8 @@ import org.koin.dsl.module
 
 val module = module {
     singleOf(::WebsocketHandler)
+    singleOf(::Mixer)
 }
+
+
+class Mixer(var mixer: String = "")

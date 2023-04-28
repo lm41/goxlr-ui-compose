@@ -8,13 +8,13 @@ import net.harawata.appdirs.AppDirsFactory
 fun main() = application {
 
 
-Window(
+    Window(
         onCloseRequest = ::exitApplication,
         title = "GoXLR UI"
     ) {
-    appStorage = AppDirsFactory.getInstance().getUserDataDir(
-        "de.rmrf.goxlr-compose-ui", "1.0.0", "lm41"
-    )
-    App()
-}
+        appStorage = AppDirsFactory.getInstance().getUserDataDir(
+            "goxlr-compose-ui", "1.0.0", "de.rmrf"
+        )
+        App()
+    }
 }

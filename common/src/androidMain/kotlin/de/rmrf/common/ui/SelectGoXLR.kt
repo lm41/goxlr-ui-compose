@@ -13,9 +13,14 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import de.rmrf.common.di.MainAppState
+import de.rmrf.common.di.Mixer
 import de.rmrf.common.di.module
 import de.rmrf.common.di.rememberMainAppState
+import de.rmrf.common.navigation.Navigator
+import de.rmrf.common.navigation.ScreenRoutes
+import org.koin.compose.koinInject
 import org.koin.core.context.startKoin
+import org.koin.core.parameter.parametersOf
 
 @Composable
 actual fun SelectGoXLR(state: MainAppState) {
@@ -23,8 +28,10 @@ actual fun SelectGoXLR(state: MainAppState) {
         it.status.mixers.let { hm ->
             if (hm.size == 1) {
                 state.mixer = hm.toList()[0].first
-                state.currentState = state.webSocketHandler.state!!.status
+                koinInject<Mixer>(parameters = { parametersOf("") }).mixer = state.mixer
+                state.currentState = it.status
                 println("${state.mixer} selected")
+                Navigator.navigate(ScreenRoutes.MainScreen.route)
             }
         }
 
@@ -62,5 +69,5 @@ fun SelectGoXLRPreview() {
     startKoin {
         modules(module)
     }
-    SelectGoXLR(rememberMainAppState())
+    SelectGoXLR(rememberMainAppState(koinInject(parameters = { parametersOf("192.168.178.136", 14564) })))
 }

@@ -17,9 +17,13 @@ import androidx.compose.ui.text.input.KeyboardType
 import de.rmrf.common.data.kstore.PreviousConnection
 import de.rmrf.common.data.kstore.PreviousConnections
 import de.rmrf.common.data.kstore.store
+import de.rmrf.common.di.Mixer
 import de.rmrf.common.di.module
 import de.rmrf.common.di.rememberMainAppState
-import de.rmrf.common.ui.SelectGoXLR
+import de.rmrf.common.navigation.Navigator
+import de.rmrf.common.navigation.ScreenRoutes
+import de.rmrf.common.ui.MainScreen
+import de.rmrf.common.ui.SelectionScreen
 import de.rmrf.common.util.digets
 import de.rmrf.common.util.int
 import kotlinx.coroutines.runBlocking
@@ -33,7 +37,20 @@ fun App() {
     startKoin {
         modules(module)
     }
-    ViewHolder()
+    Navigator.addScreen(route = ScreenRoutes.ConnectionScreen.route) {
+        ViewHolder()
+    }
+    Navigator.addScreen(route = ScreenRoutes.MixerSelectionScreen.route) {
+        SelectionScreen()
+    }
+    Navigator.addScreen(route = ScreenRoutes.MainScreen.route, true) {
+        MainScreen()
+    }
+    Navigator.navigate(ScreenRoutes.ConnectionScreen.route)
+
+    Navigator.renderUI()
+
+
 }
 
 /*TODO:
@@ -56,13 +73,14 @@ fun ViewHolder() {
     val isSubmitted = remember { mutableStateOf(false) }
     val horizontalScrollState = rememberScrollState()
 
+    koinInject<Mixer> { parametersOf("") }
+
+
+
+
     if (isSubmitted.value) {
-        val state = rememberMainAppState(koinInject(parameters = { parametersOf(ip, port.toInt()) }))
-        if (state.mixer.isEmpty()) {
-            SelectGoXLR(state)
-        } else {
-            Text("${state.mixer} selected")
-        }
+        rememberMainAppState(koinInject(parameters = { parametersOf(ip, port.toInt()) }))
+        Navigator.navigate(ScreenRoutes.MixerSelectionScreen.route)
     } else {
         Row(
             Modifier.horizontalScroll(horizontalScrollState)

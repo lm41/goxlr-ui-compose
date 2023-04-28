@@ -12,6 +12,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import de.rmrf.common.di.MainAppState
+import de.rmrf.common.di.Mixer
+import de.rmrf.common.navigation.Navigator
+import de.rmrf.common.navigation.ScreenRoutes
+import org.koin.compose.koinInject
 
 @Composable
 actual fun SelectGoXLR(state: MainAppState) {
@@ -20,7 +24,9 @@ actual fun SelectGoXLR(state: MainAppState) {
         it.status.mixers.let { hm ->
             if (hm.size == 1) {
                 state.mixer = hm.toList()[0].first
+                koinInject<Mixer>().mixer = state.mixer
                 state.currentState = state.webSocketHandler.state!!.status
+                Navigator.navigate(ScreenRoutes.MainScreen.route)
                 println("${state.mixer} selected")
             }
         }
