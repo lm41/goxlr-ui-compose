@@ -19,6 +19,7 @@ kotlin {
             dependencies {
                 implementation(project(":common"))
                 implementation(compose.desktop.currentOs)
+                implementation("net.harawata:appdirs:1.2.1")
             }
         }
         val jvmTest by getting

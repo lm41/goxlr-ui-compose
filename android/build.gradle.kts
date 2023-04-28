@@ -30,6 +30,14 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
+    packagingOptions {
+        resources.excludes.apply {
+            add("META-INF/LICENSE")
+            add("META-INF/*.properties")
+            add("META-INF/AL2.0")
+            add("META-INF/LGPL2.1")
+        }
+    }
 
     dexOptions {
         javaMaxHeapSize = "4g"

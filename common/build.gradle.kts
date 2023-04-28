@@ -1,9 +1,9 @@
-import org.jetbrains.compose.compose
-
 plugins {
     kotlin("multiplatform")
     id("org.jetbrains.compose")
     id("com.android.library")
+    id("kotlin-parcelize")
+    kotlin("plugin.serialization") version "1.8.10"
 }
 
 group = "de.rmrf"
@@ -33,6 +33,14 @@ kotlin {
 
                 implementation("io.insert-koin:koin-core:3.4.0")
                 implementation("io.insert-koin:koin-compose:1.0.1")
+
+                implementation("net.harawata:appdirs:1.2.1")
+                implementation("io.github.xxfast:kstore:0.5.0")
+                implementation("io.github.xxfast:kstore-file:0.5.0")
+
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.0")
+
+
 
 
                 api(compose.runtime)
@@ -74,4 +82,7 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
+}
+dependencies {
+    implementation("androidx.room:room-ktx:2.5.1")
 }
