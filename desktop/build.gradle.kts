@@ -19,6 +19,7 @@ kotlin {
             dependencies {
                 implementation(project(":common"))
                 implementation(compose.desktop.currentOs)
+                implementation("io.insert-koin:koin-core:3.4.0")
                 implementation("net.harawata:appdirs:1.2.1")
             }
         }

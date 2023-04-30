@@ -14,6 +14,7 @@ repositories {
 dependencies {
     implementation(project(":common"))
     implementation("androidx.activity:activity-compose:1.7.1")
+    implementation("io.insert-koin:koin-android:3.4.0")
     implementation("ro.dragossusi:viewmodel:0.0.6")
 }
 

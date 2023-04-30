@@ -59,11 +59,13 @@ kotlin {
             dependencies {
                 api("androidx.appcompat:appcompat:1.6.1")
                 api("androidx.core:core-ktx:1.10.0")
+                implementation("io.insert-koin:koin-android:3.4.0")
             }
         }
 
         val desktopMain by getting {
             dependencies {
+                implementation("io.insert-koin:koin-core:3.4.0")
                 api(compose.preview)
             }
         }

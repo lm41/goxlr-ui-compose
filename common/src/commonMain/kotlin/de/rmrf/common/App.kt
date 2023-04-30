@@ -34,9 +34,6 @@ import org.koin.core.parameter.parametersOf
 @Composable
 fun App() {
 
-    startKoin {
-        modules(module)
-    }
     Navigator.addScreen(route = ScreenRoutes.ConnectionScreen.route) {
         ViewHolder()
     }
