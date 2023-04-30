@@ -11,6 +11,26 @@ enum class DisplayMode {
     Simple,
     Advanced
 }
+
+enum class DisplayModeComponents {
+    NoiseGate,
+    Equaliser,
+    Compressor,
+    EqFineTune,
+}
+
+enum class ButtonColourGroups {
+    FaderMute,
+    EffectSelector,
+    SampleBankSelector,
+    SamplerButtons,
+}
+
+enum class Mix {
+    A,
+    B;
+}
+
 enum class SamplePlaybackMode {
     PlayNext,
     PlayStop,
@@ -19,6 +39,7 @@ enum class SamplePlaybackMode {
     FadeOnRelease,
     Loop
 }
+
 enum class EchoStyle {
     Quarter,
     Eighth,
