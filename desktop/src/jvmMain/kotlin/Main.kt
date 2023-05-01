@@ -22,7 +22,7 @@ fun main() = application {
         appStorage = AppDirsFactory.getInstance().getUserDataDir(
             "goxlr-compose-ui", "1.0.0", "de.rmrf"
         )
-        AppTheme(isSystemInDarkTheme()){
+        AppTheme(isSystemInDarkTheme()) {
             App()
         }
     }

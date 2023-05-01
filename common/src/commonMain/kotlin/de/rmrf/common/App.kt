@@ -17,36 +17,19 @@ import androidx.compose.ui.text.input.KeyboardType
 import de.rmrf.common.data.kstore.PreviousConnection
 import de.rmrf.common.data.kstore.PreviousConnections
 import de.rmrf.common.data.kstore.store
-import de.rmrf.common.di.Mixer
-import de.rmrf.common.di.module
-import de.rmrf.common.di.rememberMainAppState
-import de.rmrf.common.navigation.Navigator
+import de.rmrf.common.di.AppStore
 import de.rmrf.common.navigation.ScreenRoutes
-import de.rmrf.common.ui.MainScreen
-import de.rmrf.common.ui.SelectionScreen
 import de.rmrf.common.util.digets
 import de.rmrf.common.util.int
 import kotlinx.coroutines.runBlocking
-import org.koin.compose.koinInject
-import org.koin.core.context.startKoin
-import org.koin.core.parameter.parametersOf
 
 @Composable
 fun App() {
 
-    Navigator.addScreen(route = ScreenRoutes.ConnectionScreen.route) {
-        ViewHolder()
-    }
-    Navigator.addScreen(route = ScreenRoutes.MixerSelectionScreen.route) {
-        SelectionScreen()
-    }
-    Navigator.addScreen(route = ScreenRoutes.MainScreen.route, true) {
-        MainScreen()
-    }
-    Navigator.navigate(ScreenRoutes.ConnectionScreen.route)
-
-    Navigator.renderUI()
-
+    val model = remember { AppStore() }
+    val state = model.state
+    model.setUpSreens()
+    state.navigator.renderUI()
 
 }
 
@@ -62,7 +45,7 @@ fun App() {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ViewHolder() {
+fun ViewHolder(onSelect: (ip: String, port: Int) -> Unit, updateScreenRoute: (ScreenRoutes) -> Unit) {
     var ip by remember { mutableStateOf("") }
     var ipError by remember { mutableStateOf(false) }
     var port by remember { mutableStateOf("") }
@@ -70,14 +53,10 @@ fun ViewHolder() {
     val isSubmitted = remember { mutableStateOf(false) }
     val horizontalScrollState = rememberScrollState()
 
-    koinInject<Mixer> { parametersOf("") }
-
-
-
 
     if (isSubmitted.value) {
-        rememberMainAppState(koinInject(parameters = { parametersOf(ip, port.toInt()) }))
-        Navigator.navigate(ScreenRoutes.MixerSelectionScreen.route)
+        onSelect(ip, port.int ?: 14564)
+        updateScreenRoute(ScreenRoutes.MixerSelectionScreen)
     } else {
         Row(
             Modifier.horizontalScroll(horizontalScrollState)

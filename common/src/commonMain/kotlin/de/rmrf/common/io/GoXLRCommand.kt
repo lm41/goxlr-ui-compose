@@ -1,16 +1,76 @@
 package de.rmrf.common.io
 
+import com.fasterxml.jackson.annotation.JsonFormat
+import com.fasterxml.jackson.annotation.JsonSubTypes
 import de.rmrf.common.data.*
+import de.rmrf.common.io.GoXLRCommand.*
 import kotlinx.serialization.Serializable
 
 
 @Serializable
+@JsonFormat(shape = JsonFormat.Shape.ARRAY)
+@JsonSubTypes(
+    JsonSubTypes.Type(value = SetShutdownCommands::class, name = "SetShutdownCommands"),
+    JsonSubTypes.Type(value = SetSamplerPreBufferDuration::class, name = "SetSamplerPreBufferDuration"),
+    JsonSubTypes.Type(value = SetFader::class, name = "SetFader"),
+    JsonSubTypes.Type(value = SetFaderMuteFunction::class, name = "SetFaderMuteFunction"),
+    JsonSubTypes.Type(value = SetVolume::class, name = "SetVolume"),
+    JsonSubTypes.Type(value = SetMicrophoneType::class, name = "SetMicrophoneType"),
+    JsonSubTypes.Type(value = SetMicrophoneGain::class, name = "SetMicrophoneGain"),
+    JsonSubTypes.Type(value = SetRouter::class, name = "SetRouter"),
+    JsonSubTypes.Type(value = SetCoughMuteFunction::class, name = "SetCoughMuteFunction"),
+    JsonSubTypes.Type(value = SetCoughIsHold::class, name = "SetCoughIsHold"),
+    JsonSubTypes.Type(value = SetSwearButtonVolume::class, name = "SetSwearButtonVolume"),
+    JsonSubTypes.Type(value = SetEqMiniGain::class, name = "SetEqMiniGain"),
+    JsonSubTypes.Type(value = SetEqMiniFreq::class, name = "SetEqMiniFreq"),
+    JsonSubTypes.Type(value = SetEqGain::class, name = "SetEqGain"),
+    JsonSubTypes.Type(value = SetEqFreq::class, name = "SetEqFreq"),
+    JsonSubTypes.Type(value = SetGateThreshold::class, name = "SetGateThreshold"),
+    JsonSubTypes.Type(value = SetGateAttenuation::class, name = "SetGateAttenuation"),
+    JsonSubTypes.Type(value = SetGateAttack::class, name = "SetGateAttack"),
+    JsonSubTypes.Type(value = SetGateRelease::class, name = "SetGateRelease"),
+    JsonSubTypes.Type(value = SetGateActive::class, name = "SetGateActive"),
+    JsonSubTypes.Type(value = SetCompressorThreshold::class, name = "SetCompressorThreshold"),
+    JsonSubTypes.Type(value = SetCompressorRatio::class, name = "SetCompressorRatio"),
+    JsonSubTypes.Type(value = SetCompressorAttack::class, name = "SetCompressorAttack"),
+    JsonSubTypes.Type(value = SetCompressorReleaseTime::class, name = "SetCompressorReleaseTime"),
+    JsonSubTypes.Type(value = SetCompressorMakeupGain::class, name = "SetCompressorMakeupGain"),
+    JsonSubTypes.Type(value = SetElementDisplayMode::class, name = "SetElementDisplayMode"),
+    JsonSubTypes.Type(value = SetDeeser::class, name = "SetDeeser"),
+    JsonSubTypes.Type(value = SetFaderDisplayStyle::class, name = "SetFaderDisplayStyle"),
+    JsonSubTypes.Type(value = SetFaderColours::class, name = "SetFaderColours"),
+    JsonSubTypes.Type(value = SetAllFaderColours::class, name = "SetAllFaderColours"),
+    JsonSubTypes.Type(value = SetAllFaderDisplayStyle::class, name = "SetAllFaderDisplayStyle"),
+    JsonSubTypes.Type(value = SetButtonColours::class, name = "SetButtonColours")
+)
 sealed class GoXLRCommand {
+
+    /*private companion object {
+        @JsonCreator
+        @JvmStatic
+        fun findBySimpleClassName(simpleName: String) : GoXLRCommand? {
+            return GoXLRCommand::class.sealedSubclasses.first {
+                it.simpleName == simpleName
+            }.objectInstance
+        }
+    }*/
+
+    @Serializable
     data class SetShutdownCommands(val commands: List<GoXLRCommand>) : GoXLRCommand()
+
+    @Serializable
     data class SetSamplerPreBufferDuration(val duration: UShort) : GoXLRCommand()
 
-    data class SetFader(val faderName: FaderName, val channelName: ChannelName) : GoXLRCommand()
+    //@JsonTypeInfo(use = JsonTypeInfo.Id.NAME)
+    data class SetFader(
+
+        val faderName: FaderName, val channelName: ChannelName
+    ) : GoXLRCommand()
+
+    @Serializable
     data class SetFaderMuteFunction(val faderName: FaderName, val muteFunction: MuteFunction) : GoXLRCommand()
+
+    @Serializable
 
     data class SetVolume(val channelName: ChannelName, val volume: UByte) : GoXLRCommand()
     data class SetMicrophoneType(val microphoneType: MicrophoneType) : GoXLRCommand()

@@ -11,23 +11,21 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import de.rmrf.common.di.MainAppState
-import de.rmrf.common.di.Mixer
-import de.rmrf.common.navigation.Navigator
+import de.rmrf.common.data.DaemonStatus
 import de.rmrf.common.navigation.ScreenRoutes
-import org.koin.compose.koinInject
 
 @Composable
-actual fun SelectGoXLR(state: MainAppState) {
+actual fun SelectGoXLR(
+    daemonStatus: DaemonStatus?,
+    updateSerialNumber: (String) -> Unit,
+    updateScreen: (ScreenRoutes) -> Unit
+) {
 
-    state.webSocketHandler.state?.let {
-        it.status.mixers.let { hm ->
+    daemonStatus?.let {
+        it.mixers.let { hm ->
             if (hm.size == 1) {
-                state.mixer = hm.toList()[0].first
-                koinInject<Mixer>().mixer = state.mixer
-                state.currentState = state.webSocketHandler.state!!.status
-                Navigator.navigate(ScreenRoutes.MainScreen.route)
-                println("${state.mixer} selected")
+                updateSerialNumber(hm.toList()[0].first)
+                updateScreen(ScreenRoutes.MainScreen)
             }
         }
 
@@ -41,13 +39,12 @@ actual fun SelectGoXLR(state: MainAppState) {
                 modifier = Modifier.fillMaxWidth()
             ) {
                 LazyColumn {
-                    this.items(it.status.mixers.toList()) {
+                    this.items(it.mixers.toList()) {
                         Button(
                             onClick = {
-                                println("${it.first} clicked")
-                                state.mixer = it.first
-                                state.currentState = state.webSocketHandler.state!!.status
-                                println(state.currentState!!.mixers[state.mixer])
+                                //println("${it.first} clicked")
+                                updateSerialNumber(it.first)
+                                //println(state.currentState!!.mixers[state.mixer])
                             },
                         ) {
                             Text(it.first)

@@ -19,6 +19,7 @@ kotlin {
             dependencies {
                 implementation(project(":common"))
                 implementation(compose.desktop.currentOs)
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.0")
                 implementation("io.insert-koin:koin-core:3.4.0")
                 implementation("net.harawata:appdirs:1.2.1")
             }

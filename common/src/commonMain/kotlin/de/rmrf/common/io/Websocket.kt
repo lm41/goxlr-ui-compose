@@ -6,26 +6,28 @@ import androidx.compose.runtime.setValue
 import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.databind.PropertyNamingStrategies
-import com.fasterxml.jackson.databind.PropertyNamingStrategy
+import com.fasterxml.jackson.databind.SerializationFeature
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.fasterxml.jackson.module.kotlin.readValue
+import com.flipkart.zjsonpatch.JsonPatch
+import de.rmrf.common.data.DaemonStatus
+import de.rmrf.common.data.Data
+import de.rmrf.common.data.WebsocketResponse
+import kotlinx.coroutines.flow.flowOf
 import okhttp3.*
 import okio.ByteString
-import com.fasterxml.jackson.module.kotlin.registerKotlinModule
-import com.flipkart.zjsonpatch.CompatibilityFlags
-import com.flipkart.zjsonpatch.JsonPatch
-import de.rmrf.common.data.*
-import okio.ByteString.Companion.toByteString
-import okio.internal.commonAsUtf8ToByteArray
-import java.util.*
-import kotlin.collections.ArrayList
-import kotlin.properties.Delegates
 
-class WebsocketHandler(websocketIp: String, websocketPort: Int) {
+class WebsocketHandler(websocketIp: String, websocketPort: Int, val updateDaemonStatus: (DaemonStatus) -> Unit) {
 
-    private val mapper: ObjectMapper = jacksonObjectMapper().setPropertyNamingStrategy(PropertyNamingStrategies.SNAKE_CASE)
+    private val mapper: ObjectMapper = jacksonObjectMapper()
+        /*.registerModule(kotlinModule().apply {
+            addSerializer(Data::class.java, DataSerializer)
+            addDeserializer(Data::class.java, DataDeserializer)
+        })*/
+        .setPropertyNamingStrategy(PropertyNamingStrategies.SNAKE_CASE)
     lateinit var data: JsonNode
     var state by mutableStateOf<Data.Status?>(null)
+    val stateFlow = flowOf(state)
     private var id = 0L
 
     private val client: WebSocket
@@ -43,18 +45,31 @@ class WebsocketHandler(websocketIp: String, websocketPort: Int) {
         getFirstStatus()
     }
 
-    private fun getFirstStatus(){
+    private fun getFirstStatus() {
         client.send("{ \"id\": $id, \"data\": \"GetStatus\" }")
+    }
+
+    fun sendCommand(command: GoXLRCommand, serial: String) {
+        mapper.configure(SerializationFeature.WRAP_ROOT_VALUE, true)
+        val serializedCommand = mapper.writeValueAsString(command)
+        mapper.configure(SerializationFeature.WRAP_ROOT_VALUE, false)
+        val commandTest = "{ \"id\": $id, \"data\": { \"Command\": [\"$serial\", $serializedCommand] } }"
+
+        println(commandTest)
+        client.send(commandTest)
     }
 
     private fun handleMessage(message: String) {
         println(message)
         try {
-            val response: WebsocketResponse = mapper.readValue(message)
-            if (response.id != 0L){
+            val response: WebsocketResponse = mapper.readValue<WebsocketResponse>(message)
+            if (response.data is Data.Ok) {
+                return
+            }
+            if (response.id != 0L) {
                 id = response.id
             }
-            if (response.data is Data.Status){
+            if (response.data is Data.Status) {
                 data = mapper.readValue<JsonNode>(message).findPath("data")
                 state = response.data
             }
@@ -62,8 +77,12 @@ class WebsocketHandler(websocketIp: String, websocketPort: Int) {
                 JsonPatch.applyInPlace(response.data.patch, data.findPath("Status"))
                 state = mapper.treeToValue(data, Data.Status::class.java)
             }
+            state?.let {
+                updateDaemonStatus(it.status)
+            }
         } catch (e: Exception){
             e.printStackTrace()
+
         }
     }
 

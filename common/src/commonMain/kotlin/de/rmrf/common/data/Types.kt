@@ -1,5 +1,29 @@
 package de.rmrf.common.data
 
+import de.rmrf.common.io.GoXLRCommand
+
+
+enum class PathTypes {
+    Profiles,
+    MicProfiles,
+    Presets,
+    Samples,
+    Icons,
+}
+
+sealed class DaemonRequest {
+    object Ping : DaemonRequest()
+    object OpenUi : DaemonRequest()
+    object GetStatus : DaemonRequest()
+    object StopDaemon : DaemonRequest()
+    object GetHttpState : DaemonRequest()
+    data class OpenPath(val pathType: PathTypes) : DaemonRequest()
+    data class SetShowTrayIcon(val show: Boolean) : DaemonRequest()
+    data class SetTTSEnabled(val enabled: Boolean) : DaemonRequest()
+    data class SetAutoStartEnabled(val enabled: Boolean) : DaemonRequest()
+    data class RecoverDefaults(val pathType: PathTypes) : DaemonRequest()
+    data class Command(val command: String, val goXLRCommand: GoXLRCommand) : DaemonRequest()
+}
 
 enum class SamplePlayOrder {
     Sequential,

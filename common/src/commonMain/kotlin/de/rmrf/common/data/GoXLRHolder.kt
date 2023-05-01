@@ -1,54 +1,73 @@
 package de.rmrf.common.data
 
-import com.fasterxml.jackson.annotation.JsonProperty
-import com.fasterxml.jackson.annotation.JsonSubTypes
-import com.fasterxml.jackson.annotation.JsonTypeInfo
-import com.fasterxml.jackson.annotation.JsonTypeName
-import com.fasterxml.jackson.core.JsonGenerator
-import com.fasterxml.jackson.core.JsonParser
-import com.fasterxml.jackson.core.JsonProcessingException
-import com.fasterxml.jackson.core.TreeNode
+import com.fasterxml.jackson.annotation.*
 import com.fasterxml.jackson.databind.*
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize
-import com.fasterxml.jackson.databind.node.ObjectNode
-import com.flipkart.zjsonpatch.JsonPatch
-import java.io.IOException
 import java.nio.file.Path
 import java.util.*
-import kotlin.collections.HashMap
 
 
 data class WebsocketResponse(
     val id: Long,
     val data: Data,
 
-){
-    companion object{
-        fun getEmpty() : WebsocketResponse {
-            return WebsocketResponse(id = -1, data = Data.Empty)
+    ) {
+    companion object {
+        fun getEmpty(): WebsocketResponse {
+            return WebsocketResponse(id = -1, data = Data.Ok)
         }
     }
 }
 
 
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.WRAPPER_OBJECT, )
 @JsonSubTypes(
-    JsonSubTypes.Type(Data.Status::class),
-    JsonSubTypes.Type(Data.Patch::class)
+    value = [
+        JsonSubTypes.Type(Data.Error::class),
+        JsonSubTypes.Type(Data.Ok::class),
+        JsonSubTypes.Type(Data.Status::class),
+        JsonSubTypes.Type(Data.Patch::class)
+    ]
 )
+@JsonTypeInfo(include = JsonTypeInfo.As.WRAPPER_OBJECT, use = JsonTypeInfo.Id.NAME)
 sealed interface Data {
 
-    object Empty : Data
+    @JsonTypeName("Error")
+    @JvmInline
+    value class Error(val error: String) : Data {
+        companion object {
+            @JvmStatic
+            @JsonCreator
+            fun fromJson(@JsonProperty("Error") error: String): Error = Error(error)
+        }
+    }
+
+    @JsonTypeName("Ok")
+    @JsonTypeInfo(include = JsonTypeInfo.As.PROPERTY, use = JsonTypeInfo.Id.NAME)
+    object Ok : Data {
+        @JvmStatic
+        @JsonCreator
+        fun fromJson(): Ok = Ok
+    }
+
     @JsonTypeName("Status")
     @JvmInline
-    value class Status(val status: DaemonStatus): Data
+    value class Status(val status: DaemonStatus) : Data {
+        companion object {
+            @JvmStatic
+            @JsonCreator
+            fun fromJson(@JsonProperty("Status") status: DaemonStatus): Status = Status(status)
+        }
+    }
 
     @JsonTypeName("Patch")
     @JvmInline
-    value class Patch(val patch: JsonNode): Data
+    value class Patch(val patch: JsonNode) : Data {
+        companion object {
+            @JvmStatic
+            @JsonCreator
+            fun fromJson(@JsonProperty("Patch") patch: JsonNode): Patch = Patch(patch)
+        }
+    }
 }
-
-
 
 
 data class OldData(
@@ -61,7 +80,12 @@ data class DaemonStatus(
     var mixers: HashMap<String, MixerStatus>,
     var paths: Paths,
     var files: Files
-)
+) {
+    fun getMixerStatus(serialNumber: String): MixerStatus? {
+        return this.mixers[serialNumber]
+    }
+}
+
 data class DaemonConfig(
     @JsonProperty("daemon_version")
     var daemonVersion: String,
@@ -227,6 +251,7 @@ data class Reverb(
     var modSpeed: Byte,
     var modDepth: Byte,
 )
+
 data class Lighting(
     var faders: HashMap<FaderName, FaderLighting>,
     var buttons: HashMap<Button, ButtonLighting>,
@@ -280,7 +305,8 @@ data class Levels(
     var bleep: Byte,
     var deess: UByte
 )
-data class HardwareStatus (
+
+data class HardwareStatus(
     var versions: FirmwareVersions,
     var serialNumber: String,
     var manufacturedDate: String,
@@ -330,6 +356,7 @@ data class Equaliser(
     var gain: HashMap<EqFrequencies, Byte>,
     var frequency: HashMap<EqFrequencies, Float>
 )
+
 data class EqualiserMini(
     var gain: HashMap<MiniEqFrequencies, Byte>,
     var frequency: HashMap<MiniEqFrequencies, Float>

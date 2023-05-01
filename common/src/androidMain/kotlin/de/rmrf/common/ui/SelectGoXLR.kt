@@ -12,26 +12,22 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import de.rmrf.common.di.MainAppState
-import de.rmrf.common.di.Mixer
+import de.rmrf.common.data.DaemonStatus
 import de.rmrf.common.di.module
-import de.rmrf.common.di.rememberMainAppState
-import de.rmrf.common.navigation.Navigator
 import de.rmrf.common.navigation.ScreenRoutes
-import org.koin.compose.koinInject
 import org.koin.core.context.startKoin
-import org.koin.core.parameter.parametersOf
 
 @Composable
-actual fun SelectGoXLR(state: MainAppState) {
-    state.webSocketHandler.state?.let {
-        it.status.mixers.let { hm ->
+actual fun SelectGoXLR(
+    daemonStatus: DaemonStatus?,
+    updateSerialNumber: (String) -> Unit,
+    updateScreen: (ScreenRoutes) -> Unit
+) {
+    daemonStatus?.let {
+        it.mixers.let { hm ->
             if (hm.size == 1) {
-                state.mixer = hm.toList()[0].first
-                koinInject<Mixer>(parameters = { parametersOf("") }).mixer = state.mixer
-                state.currentState = it.status
-                println("${state.mixer} selected")
-                Navigator.navigate(ScreenRoutes.MainScreen.route)
+                updateSerialNumber(hm.toList()[0].first)
+                updateScreen(ScreenRoutes.MainScreen)
             }
         }
 
@@ -45,13 +41,11 @@ actual fun SelectGoXLR(state: MainAppState) {
                 modifier = Modifier.fillMaxWidth()
             ) {
                 LazyColumn {
-                    this.items(it.status.mixers.toList()) {
+                    this.items(it.mixers.toList()) {
                         Button(
                             onClick = {
-                                println("${it.first} clicked")
-                                state.mixer = it.first
-                                state.currentState = state.webSocketHandler.state!!.status
-                                println(state.currentState!!.mixers[state.mixer])
+                                updateSerialNumber(it.first)
+                                updateScreen(ScreenRoutes.MainScreen)
                             },
                         ) {
                             Text(it.first)
@@ -69,5 +63,5 @@ fun SelectGoXLRPreview() {
     startKoin {
         modules(module)
     }
-    SelectGoXLR(rememberMainAppState(koinInject(parameters = { parametersOf("192.168.178.136", 14564) })))
+    //SelectGoXLR(rememberMainAppState(koinInject(parameters = { parametersOf("192.168.178.136", 14564) })))
 }
