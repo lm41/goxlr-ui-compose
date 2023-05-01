@@ -47,7 +47,7 @@ fun Fader(
                     modifier = Modifier.rotate(270F).size(120.dp),
                     value = value,
                     onValueChange = { updatedNum: Float ->
-                        value = updatedNum.mapToUByte().mapToFloat()
+                        value = updatedNum
                         sendCommand(GoXLRCommand.SetVolume(channelName, updatedNum.mapToUByte()))
                     },
                     valueRange = 0F..1F
